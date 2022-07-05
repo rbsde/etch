@@ -2,7 +2,9 @@ const etchcontainer = document.getElementById('etchgrid');
 const gridsize = document.getElementById('gridsize');
 let pcolor = document.getElementById('colorpick');
 //document.getElementById('colorpick').addEventListener('click', pcolor);
+const rbow = document.getElementById('rainbow');
 
+rbow.addEventListener('click', randomColor);
 
 // Math.floor(Math.random() * (max - min + 1)) + min // 256 rgb
 
@@ -48,22 +50,7 @@ for(let i = 0; i < gsize**2; ++i){
 
 
 
-    function randomColor(){
-
-
-        //cell.removeEventListener('mouseenter', changeColor);
-         //cell.addEventListener('mouseenter', randomColor);
-
-        let r = Math.floor(Math.random() * 256);
-        let g = Math.floor(Math.random() * 256);
-        let b = Math.floor(Math.random() * 256);
-    
-        cell.style.backgroundColor='rgb(' + [r,g,b].join(',') + ')';
-
     }
-
-
-}
 }
 
 
@@ -79,3 +66,27 @@ function showGrid(){
             item.classList.toggle('border');
         })
         };
+
+
+        function randomColor(){
+
+
+        
+    
+             let scell = document.querySelectorAll('.cell');
+    
+                [...scell].forEach(item => {
+
+
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+    
+            item.addEventListener('mouseenter', () =>
+        
+            item.style.backgroundColor='rgb(' + [r,g,b].join(',') + ')');
+    
+                });
+    
+    
+    }
