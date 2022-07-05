@@ -1,0 +1,15 @@
+#etchgrid {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+
+.cell {
+    
+    flex-grow: 1;
+    flex-shrink: 1;
+    outline: black solid 1px;
+}
