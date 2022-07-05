@@ -1,3 +1,5 @@
+
+
 const etchcontainer = document.getElementById('etchgrid');
 const gridsize = document.getElementById('gridsize');
 let pcolor = document.getElementById('colorpick');
@@ -5,7 +7,7 @@ let pcolor = document.getElementById('colorpick');
 const rbow = document.getElementById('rainbow');
 
 rbow.addEventListener('click', randomColor);
-
+pcolor.addEventListener('click', changeColor);
 // Math.floor(Math.random() * (max - min + 1)) + min // 256 rgb
 
 gridsize.addEventListener('keydown', (e) => { 
@@ -18,7 +20,8 @@ gridsize.addEventListener('keydown', (e) => {
 
 
 
-
+mkgrid(10);
+changeColor();
  
 
 function mkgrid(gsize){
@@ -28,7 +31,6 @@ for(let i = 0; i < gsize**2; ++i){
     let cell = document.createElement('div');
     cell.classList.add('cell');
   //  cell.addEventListener('mousedown', changeColor);
-    cell.addEventListener('mouseenter', changeColor);
     cell.style.flexBasis = (600/gsize)+'px';
     etchcontainer.appendChild(cell);
 
@@ -37,27 +39,22 @@ for(let i = 0; i < gsize**2; ++i){
     document.getElementById('showgrid').addEventListener('click', showGrid);
     
 
-
-    function changeColor(){
-        
-        
-        cell.style.backgroundColor=pcolor.value;
-   
-    }
-
-
-   // let rainbow= document.getElementById('rainbow').addEventListener('click', randomColor());
-
-
-
     }
 }
 
 
-//randomcolor
-//pickcolor
 
+function changeColor(){
+        
+    let scell = document.querySelectorAll('.cell');
 
+            [...scell].forEach(item => {
+
+    item.addEventListener('mouseenter', () =>
+
+    item.style.backgroundColor=pcolor.value)
+
+})}
 
 function showGrid(){
             let scell = document.querySelectorAll('.cell');
@@ -90,3 +87,6 @@ function showGrid(){
     
     
     }
+
+
+    
