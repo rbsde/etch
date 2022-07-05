@@ -3,7 +3,7 @@
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    
+    outline: black solid 1px;
 }
 
 
@@ -11,5 +11,13 @@
     
     flex-grow: 1;
     flex-shrink: 1;
-    outline: black solid 1px;
+   
+}
+
+#headline {
+    padding-bottom: 8px;
+}
+
+.border {
+    outline: 1px black solid;
 }
