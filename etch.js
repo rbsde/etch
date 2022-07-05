@@ -8,13 +8,15 @@ const rbow = document.getElementById('rainbow');
 
 rbow.addEventListener('click', randomColor);
 pcolor.addEventListener('click', changeColor);
-// Math.floor(Math.random() * (max - min + 1)) + min // 256 rgb
 
-gridsize.addEventListener('keydown', (e) => { 
+
+gridsize.addEventListener('keyup', () => { 
     
-    if ((e.key == 'Enter') && gridsize.value <= 100){
+    if ( gridsize.value <= 100){
         etchcontainer.innerHTML = "";
-   mkgrid(gridsize.value)   
+   mkgrid(gridsize.value)  
+   changeColor(); 
+   showGrid();
     }   
 });
 
@@ -22,7 +24,7 @@ gridsize.addEventListener('keydown', (e) => {
 
 mkgrid(10);
 changeColor();
- 
+showGrid();
 
 function mkgrid(gsize){
 for(let i = 0; i < gsize**2; ++i){
@@ -31,7 +33,7 @@ for(let i = 0; i < gsize**2; ++i){
     let cell = document.createElement('div');
     cell.classList.add('cell');
   //  cell.addEventListener('mousedown', changeColor);
-    cell.style.flexBasis = (600/gsize)+'px';
+    cell.style.flexBasis = (100/gsize)+'%';
     etchcontainer.appendChild(cell);
 
     
@@ -75,13 +77,19 @@ function showGrid(){
                 [...scell].forEach(item => {
 
 
-            let r = Math.floor(Math.random() * 256);
+            
+    
+            item.addEventListener('mouseenter', () =>{
+                
+
+                let r = Math.floor(Math.random() * 256);
             let g = Math.floor(Math.random() * 256);
             let b = Math.floor(Math.random() * 256);
-    
-            item.addEventListener('mouseenter', () =>
-        
-            item.style.backgroundColor='rgb(' + [r,g,b].join(',') + ')');
+            
+            item.style.backgroundColor='rgb(' + [r,g,b].join(',') + ')'}
+            
+            
+            );
     
                 });
     
